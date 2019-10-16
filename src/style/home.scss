@@ -1,0 +1,45 @@
+.home {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  justify-items: center;
+}
+
+.navigation-wrapper {
+  display: flex;
+  background-color: lightslategray;
+}
+
+.right-side {
+  display: flex;
+}
+
+// the card ****************************************************
+
+.profile-card-container {
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 1px 7px black;
+  background-color: white;
+
+  img {
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .meta-data {
+    padding-top: 5px;
+    text-align: center;
+  }
+
+  .card-description {
+    padding-top: 5px;
+    text-align: center;
+  }
+}
