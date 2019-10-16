@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
 
 export default class NavigationContainer extends Component {
   render() {
@@ -8,10 +9,11 @@ export default class NavigationContainer extends Component {
           <div className="logo">Logo goes here...</div>
         </div>
         <div className="right-side">
-          <div className="nav-link">Home</div>
-          <div className="nav-link">Profile</div>
+          <Link to="/" className="link">
+            Home
+          </Link>
         </div>
       </div>
-    );
+    )
   }
 }
