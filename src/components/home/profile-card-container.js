@@ -17,7 +17,12 @@ export default class ProfileCards extends Component {
 
   render() {
     return (
-      <Link to={`/profile/${this.props.item.id}`}>
+      <Link
+        to={{
+          pathname: `/profile/${this.props.item.id}`,
+          state: this.props.item
+        }}
+      >
         <div className="profile-card-container">
           <img src={this.props.item.profile_image} alt="img" />
           <div className="meta-data">
