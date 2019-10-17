@@ -12,13 +12,11 @@ const Auth = props => {
 
   return (
     <div className="app">
-      <h1>AUTH PAGE</h1>
+      <h1>Login</h1>
 
-      {loggedIn ? (
-        <button>Logout</button>
-      ) : (
+      {props.loggedIn ? null : (
         <div>
-          <form onSubmit={() => handleSubmit()}>
+          <form onSubmit={e => handleSubmit(e)}>
             <input
               type="text"
               onChange={e => setName(e.target.value)}

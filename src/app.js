@@ -23,16 +23,19 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route
             path="/auth"
-            render={props => {
+            render={props => (
               <Auth
                 {...props}
                 loggedIn={loggedIn}
                 successfulLogin={successfulLogin}
-              />;
-            }}
+              />
+            )}
           />
           <Route path="/profile/:id" component={Profile} />
-          <Route path="/profile-form" component={ProfileForm} />
+          <Route
+            path="/profile-form"
+            render={props => <ProfileForm {...props} loggedIn={loggedIn} />}
+          />
         </Switch>
       </div>
     </BrowserRouter>
