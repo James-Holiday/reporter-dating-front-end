@@ -8,10 +8,6 @@ import NavigationContainer from "./components/home/navigation-container"
 class App extends Component {
   render() {
     return (
-      // <div>
-      //   <Home />
-      // </div>
-
       <BrowserRouter>
         <div className="app">
           <NavigationContainer />
