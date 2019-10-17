@@ -7,26 +7,6 @@ import Profile from "./pages/profile";
 import ProfileForm from "./pages/profile-form";
 import NavigationContainer from "./components/home/navigation-container";
 
-<<<<<<< HEAD
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="app">
-          <NavigationContainer />
-
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/auth" component={Auth} />
-            <Route path="/profile/:id" component={Profile} />
-            <Route path="/profile-form" component={ProfileForm} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
-=======
 const App = () => {
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -61,6 +41,5 @@ const App = () => {
     </BrowserRouter>
   );
 };
->>>>>>> 19c4bbf9a4baf0e182a17fef86dd3bbd351551a2
 
 export default App;
