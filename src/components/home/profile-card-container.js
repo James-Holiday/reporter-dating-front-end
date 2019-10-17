@@ -1,9 +1,9 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class ProfileCards extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -19,6 +19,6 @@ export default class ProfileCards extends Component {
           </div>
         </div>
       </Link>
-    )
+    );
   }
 }

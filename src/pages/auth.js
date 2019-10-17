@@ -1,33 +1,32 @@
 import React from "react";
 // import Cookie from "js-cookie";
 
-const Auth = () => {
-  const [loggedIn, setLoggedIn] = React.useState(false);
+const Auth = props => {
   const [name, setName] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
-    setLoggedIn(true);
+    props.successfulLogin();
   };
 
   return (
     <div className="app">
-      <h1>AUTH PAGE</h1>
+      <h1>Login</h1>
 
-      {loggedIn ? (
-        <button>Logout</button>
-      ) : (
+      {props.loggedIn ? null : (
         <div>
-          <form onSubmit={() => handleSubmit()}>
+          <form onSubmit={e => handleSubmit(e)}>
             <input
               type="text"
               onChange={e => setName(e.target.value)}
+              value={name}
               placeholder="Username"
             />
             <input
               type="password"
               onChange={e => setPassword(e.target.value)}
+              value={name}
               placeholder="Password"
             />
             <div>
