@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
 export default class ProfileCards extends Component {
   constructor(props) {
     super(props)
+=======
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+export default class ProfileCards extends Component {
+  constructor(props) {
+    super(props);
+>>>>>>> 19c4bbf9a4baf0e182a17fef86dd3bbd351551a2
   }
 
   render() {
@@ -19,6 +28,10 @@ export default class ProfileCards extends Component {
           </div>
         </div>
       </Link>
+<<<<<<< HEAD
     )
+=======
+    );
+>>>>>>> 19c4bbf9a4baf0e182a17fef86dd3bbd351551a2
   }
 }
