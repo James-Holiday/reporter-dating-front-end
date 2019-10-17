@@ -10,6 +10,10 @@ import NavigationContainer from "./components/home/navigation-container";
 const App = () => {
   const [loggedIn, setLoggedIn] = React.useState(false);
 
+  const successfulLogin = () => {
+    setLoggedIn(true);
+  };
+
   return (
     <BrowserRouter>
       <div className="app">
@@ -17,7 +21,16 @@ const App = () => {
 
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/auth" component={Auth} />
+          <Route
+            path="/auth"
+            render={props => {
+              <Auth
+                {...props}
+                loggedIn={loggedIn}
+                successfulLogin={successfulLogin}
+              />;
+            }}
+          />
           <Route path="/profile/:id" component={Profile} />
           <Route path="/profile-form" component={ProfileForm} />
         </Switch>
