@@ -8,12 +8,12 @@
 .left-side {
 }
 
-.logo {
-  color: $off-white;
-  cursor: pointer;
-  &:hover {
-    font-weight: bold;
-  }
+#logo img {
+    width: 75px;
+    &:hover {
+        cursor: pointer;
+    }
+
 }
 
 .right-side a {
