@@ -19,65 +19,33 @@ const ProfileForm = props => {
   const [twitter, setTwitter] = React.useState("");
   const [jobSite, setJobSite] = React.useState("");
 
-  // const buildForm = () => {
-  //   let formData = new FormData();
-
-  //   formData.append("portfolio_item[name]", this.state.name);
-  //   formData.append("portfolio_item[description]", this.state.description);
-  //   formData.append("portfolio_item[url]", this.state.url);
-  //   formData.append("portfolio_item[category]", this.state.category);
-  //   formData.append("portfolio_item[position]", this.state.position);
-
-  //   if (this.state.thumb_image) {
-  //     formData.append("portfolio_item[thumb_image]", this.state.thumb_image);
-  //   }
-  //   if (this.state.banner_image) {
-  //     formData.append("portfolio_item[banner_image]", this.state.banner_image);
-  //   }
-  //   if (this.state.logo) {
-  //     formData.append("portfolio_item[logo]", this.state.logo);
-  //   }
-
-  //   return formData;
-  // }
-
   const handleSubmit = event => {
-    axios({
-      method: this.state.apiAction,
-      url: this.state.apiUrl,
-      data: this.buildForm(),
-      withCredentials: true
-    })
-      .then(response => {
-        if (this.state.editMode) {
-          this.props.handleEditFormSubmission();
-        } else {
-          this.props.handleNewFormSubmission(response.data.portfolio_item);
-        }
-
-        this.setState({
-          name: "",
-          description: "",
-          category: "PC",
-          position: "",
-          url: "",
-          thumb_image: "",
-          banner_image: "",
-          logo: "",
-          editMode: false,
-          apiUrl: "https://powerful-garden-14138.herokuapp.com/userdata",
-          apiAction: "post"
-        });
-
-        [this.thumbRef, this.bannerRef, this.logoRef].forEach(ref => {
-          ref.current.dropzone.removeAllFiles();
-        });
-      })
-      .catch(error => {
-        console.log("portfolio form handleSubmit error", error);
-      });
-
     event.preventDefault();
+    axios
+      .post(`https://stormy-coast-00785.herokuapp.com/userdata`, {
+        first_name: firstName,
+        last_name: lastName,
+        age: age,
+        short_description: shortDescription,
+        sub_heading: subHeading,
+        headline: headline,
+        description_one: descriptionOne,
+        description_two: descriptionTwo,
+        profile_image: profileImage,
+        article_image: articleImage,
+        body_image_one: bodyImageOne,
+        body_image_two: bodyImageTwo,
+        facebook: facebook,
+        instagram: instagram,
+        twitter: twitter,
+        job_site: jobSite
+      })
+      .then(function(response) {
+        console.log("SUCCESSFUL POST");
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   const handleChange = e => {
@@ -87,17 +55,14 @@ const ProfileForm = props => {
   return (
     <div>
       {props.loggedIn ? (
-        <form
-          onSubmit={e => handleSubmit(e)}
-          className="portfolio-form-wrapper"
-        >
+        <form onSubmit={handleSubmit} className="portfolio-form-wrapper">
           <div className="two-column">
             <input
               type="text"
               name="first_name"
               placeholder="First Name"
               // value={}
-              onChange={handleChange}
+              onChange={e => setFirstName(e.target.value)}
             />
 
             <input
@@ -105,7 +70,7 @@ const ProfileForm = props => {
               name="last_name"
               placeholder="Last Name"
               // value={}
-              onChange={handleChange}
+              onChange={e => setLastName(e.target.value)}
             />
           </div>
 
@@ -115,7 +80,7 @@ const ProfileForm = props => {
               name="age"
               placeholder="Age"
               // value={}
-              onChange={handleChange}
+              onChange={e => setAge(e.target.value)}
             />
 
             <input
@@ -123,7 +88,7 @@ const ProfileForm = props => {
               name="sub_heading"
               placeholder="Sub Heading"
               // value={}
-              onChange={handleChange}
+              onChange={e => setSubHeading(e.target.value)}
             />
           </div>
 
@@ -133,7 +98,7 @@ const ProfileForm = props => {
               name="headline"
               placeholder="Headline"
               // value={}
-              onChange={handleChange}
+              onChange={e => setHeadline(e.target.value)}
             />
           </div>
 
@@ -143,28 +108,28 @@ const ProfileForm = props => {
               name="profile_image"
               placeholder="Profile Image (URL)"
               // value={}
-              onChange={handleChange}
+              onChange={e => setProfileImage(e.target.value)}
             />
             <input
               type="text"
               name="article_image"
               placeholder="Article Image (URL)"
               // value={}
-              onChange={handleChange}
+              onChange={e => setArticleImage(e.target.value)}
             />
             <input
               type="text"
               name="body_image_one"
               placeholder="Body Image 1 (URL)"
               // value={}
-              onChange={handleChange}
+              onChange={e => setBodyImageOne(e.target.value)}
             />
             <input
               type="text"
               name="body_image_two"
               placeholder="Body Image 2 (URL)"
               // value={}
-              onChange={handleChange}
+              onChange={e => setBodyImageTwo(e.target.value)}
             />
           </div>
 
@@ -174,28 +139,28 @@ const ProfileForm = props => {
               name="facebook"
               placeholder="Facebook"
               // value={}
-              onChange={handleChange}
+              onChange={e => setFacebook(e.target.value)}
             />
             <input
               type="text"
               name="instagram"
               placeholder="Instagram"
               // value={}
-              onChange={handleChange}
+              onChange={e => setInstagram(e.target.value)}
             />
             <input
               type="text"
               name="twitter"
               placeholder="Twitter"
               // value={}
-              onChange={handleChange}
+              onChange={e => setTwitter(e.target.value)}
             />
             <input
               type="text"
               name="job_site"
               placeholder="Job Site"
               // value={}
-              onChange={handleChange}
+              onChange={e => setJobSite(e.target.value)}
             />
           </div>
 
@@ -205,7 +170,7 @@ const ProfileForm = props => {
               name="short_description"
               placeholder="Short Description"
               // value={}
-              onChange={handleChange}
+              onChange={e => setShortDescription(e.target.value)}
             />
           </div>
 
@@ -215,14 +180,14 @@ const ProfileForm = props => {
               name="description"
               placeholder="Description 1"
               // value={}
-              onChange={handleChange}
+              onChange={e => setDescriptionOne(e.target.value)}
             />
             <textarea
               type="text"
               name="description"
               placeholder="Description 2"
               // value={}
-              onChange={handleChange}
+              onChange={e => setDescriptionTwo(e.target.value)}
             />
           </div>
 
