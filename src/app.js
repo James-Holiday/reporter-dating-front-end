@@ -6,6 +6,8 @@ import Auth from "./pages/auth";
 import Profile from "./pages/profile";
 import ProfileForm from "./pages/profile-form";
 import NavigationContainer from "./components/home/navigation-container";
+import BottomNavigationContainer from "./components/home/bottom-navigation-container";
+
 
 const App = () => {
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -18,7 +20,6 @@ const App = () => {
     <BrowserRouter>
       <div className="app">
         <NavigationContainer loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
@@ -37,6 +38,7 @@ const App = () => {
             render={props => <ProfileForm {...props} loggedIn={loggedIn} />}
           />
         </Switch>
+        <BottomNavigationContainer loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       </div>
     </BrowserRouter>
   );
