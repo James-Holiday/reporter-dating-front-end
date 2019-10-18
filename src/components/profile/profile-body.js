@@ -1,8 +1,33 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class ProfileBody extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+
+    this.state = {
+      currentId: this.props.currentId,
+      profileItem: {}
+    };
+  }
+
+  getProfileItem() {
+    axios
+      .get(
+        `https://stormy-coast-00785.herokuapp.com/userdata/${this.state.currentId}`
+      )
+      .then(response => {
+        this.setState({
+          profileItem: response.data
+        });
+      })
+      .catch(error => {
+        console.log("ERROR", error);
+      });
+  }
+
+  componentDidMount() {
+    this.getProfileItem();
   }
 
   render() {
@@ -23,7 +48,7 @@ export default class ProfileBody extends Component {
       profile_image,
       body_image_one,
       body_image_two
-    } = this.props.item
+    } = this.state.profileItem;
 
     return (
       <div className="profile-body-wrapper">
@@ -44,6 +69,6 @@ export default class ProfileBody extends Component {
         <div>{twitter}</div>
         <div>{job_site}</div>
       </div>
-    )
+    );
   }
 }
