@@ -6,7 +6,7 @@
 
 .navigation-wrapper {
   display: flex;
-  background-color: lightslategray;
+  background-color: $light-blue;
 }
 
 .right-side {
@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 1px 1px 7px black;
-  background-color: white;
+  background-color: $light-grey;
 
   img {
     height: 70%;

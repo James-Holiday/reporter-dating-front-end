@@ -1,18 +1,56 @@
 import React, { Component } from "react"
-import NavigationContainer from "../components/home/navigation-container"
-import ProfileCardContainer from "../components/home/profile-card-container"
 import ProfileCards from "../components/home/profile-card-container"
+import axios from "axios"
 
-import aaron from "../mockData"
+// import aaron from "../mockData"
 
-const Home = props => {
-  const renderCards = () => {
-    return aaron.map(item => {
+class Home extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      profileItems: []
+    }
+
+    this.getProfileItems = this.getProfileItems.bind(this)
+  }
+
+  getProfileItems() {
+    axios
+      .get("https://stormy-coast-00785.herokuapp.com/userdatas")
+      .then(response => {
+        this.setState({
+          profileItems: response.data
+        })
+      })
+      .catch(error => {
+        console.log("ERROR", error)
+      })
+  }
+
+  renderCards = () => {
+    return this.state.profileItems.map(item => {
       return <ProfileCards item={item} />
     })
   }
 
-  return <div className="home">{renderCards()}</div>
+  componentDidMount() {
+    this.getProfileItems()
+  }
+
+  render() {
+    return <div className="home">{this.renderCards()}</div>
+  }
 }
 
 export default Home
+
+// const Home = props => {
+//   const renderCards = () => {
+//     return aaron.map(item => {
+//       return <ProfileCards item={item} />
+//     })
+//   }
+
+//   return <div className="home">{renderCards()}</div>
+// }

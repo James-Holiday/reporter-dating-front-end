@@ -1,0 +1,28 @@
+.navigation-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.left-side {
+
+}
+
+.logo {
+    color: $off-white;
+    cursor: pointer;
+    &:hover {
+        font-weight: bold;
+    }
+}
+
+.right-side a {
+    color: $off-white;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        color: $dark-blue;
+        letter-spacing: 2px;
+    }
+}
