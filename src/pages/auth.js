@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import Cookie from "js-cookie";
 
 const Auth = props => {
@@ -30,9 +31,11 @@ const Auth = props => {
               placeholder="Password"
             />
             <div>
-              <button className="btn" type="submit">
-                Login
-              </button>
+              <Link to="/">
+                <button className="btn" type="submit">
+                  Login
+                </button>
+              </Link>
             </div>
           </form>
         </div>
