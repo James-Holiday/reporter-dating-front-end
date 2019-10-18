@@ -1,0 +1,33 @@
+.app {
+    h1 {
+        font-family: sans-serif;
+        color: $dark-grey;
+        display: flex;
+        flex-direction: start;
+        padding: 20px;
+        font-size: 3rem;
+    }
+    form {
+        input {
+            width: 20rem;
+            height: 30px;
+            font-size: 1rem;
+
+        }
+        .btn {
+            font-size: 1rem;
+            border-radius: 5px;
+            color: $off-white;
+            background-color: $dark-blue;
+            padding: 5px;
+            transition: 0.5s ease-in-out;
+            &:hover{
+                cursor: pointer;
+                border-color: $light-blue;
+            }
+            &:active {
+                background-color: $light-blue;
+            }
+        }
+    }
+}
