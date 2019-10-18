@@ -6,6 +6,7 @@ import Auth from "./pages/auth";
 import Profile from "./pages/profile";
 import ProfileForm from "./pages/profile-form";
 import NavigationContainer from "./components/home/navigation-container";
+import BottomNavigationContainer from "./components/home/bottom-navigation-container";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = React.useState(false);
