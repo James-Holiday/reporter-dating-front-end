@@ -1,0 +1,54 @@
+.portfolio-form-wrapper {
+  margin: 50px 50px;
+  .one-column {
+    display: grid;
+    margin: 25px 150px;
+    input {
+      padding: 15px;
+    }
+  }
+  .two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    margin: 25px 150px;
+    input {
+      padding: 15px 0px;
+    }
+  }
+  .four-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 25px 150px;
+    input {
+      padding: 15px 0px;
+    }
+  }
+}
+.save-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    border: 2px solid $dark-grey;
+    background-color: $light-grey;
+    font-size: 1.5em;
+    font-weight: 700;
+    padding: 10px 25px;
+  }
+}
+
+input {
+  outline: 1px solid $light-blue;
+  &:focus {
+    outline: 3px solid $light-blue;
+  }
+}
+
+textarea {
+  outline: 1px solid $light-blue;
+  padding: 100px;
+  &:focus {
+    outline: 3px solid $light-blue;
+  }
+}

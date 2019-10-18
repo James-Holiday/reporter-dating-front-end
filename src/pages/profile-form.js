@@ -4,7 +4,7 @@ import axios from "axios";
 const ProfileForm = props => {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
-  const [age, setAge] = React.useState(0);
+  const [age, setAge] = React.useState("");
   const [shortDescription, setShortDescription] = React.useState("");
   const [subHeading, setSubHeading] = React.useState("");
   const [headline, setHeadline] = React.useState("");
@@ -21,6 +21,11 @@ const ProfileForm = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (firstName === "" && lastName === "" && profileImage === "") {
+      return console.log(
+        "UNSUCCESSFUL SUBMIT:\nNO FIRST NAME\nNO LAST NAME\nNO PROFILE IMAGE"
+      );
+    }
     axios
       .post(`https://stormy-coast-00785.herokuapp.com/userdata`, {
         first_name: firstName,
@@ -52,156 +57,164 @@ const ProfileForm = props => {
     console.log("Changing");
   };
 
-  return (
-    <div>
-      {props.loggedIn ? (
-        <form onSubmit={handleSubmit} className="portfolio-form-wrapper">
-          <div className="two-column">
-            <input
-              type="text"
-              name="first_name"
-              placeholder="First Name"
-              // value={}
-              onChange={e => setFirstName(e.target.value)}
-            />
+  const determineService = () => {
+    if (props.loggedIn) {
+      return (
+        <div>
+          <form onSubmit={handleSubmit} className="portfolio-form-wrapper">
+            <div className="two-column">
+              <input
+                type="text"
+                name="first_name"
+                placeholder="First Name"
+                value={firstName}
+                onChange={e => setFirstName(e.target.value)}
+              />
 
-            <input
-              type="text"
-              name="last_name"
-              placeholder="Last Name"
-              // value={}
-              onChange={e => setLastName(e.target.value)}
-            />
-          </div>
+              <input
+                type="text"
+                name="last_name"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
+              />
+            </div>
 
-          <div className="two-column">
-            <input
-              type="text"
-              name="age"
-              placeholder="Age"
-              // value={}
-              onChange={e => setAge(e.target.value)}
-            />
+            <div className="two-column">
+              <input
+                type="text"
+                name="age"
+                placeholder="Age"
+                value={age}
+                onChange={e => setAge(e.target.value)}
+              />
 
-            <input
-              type="text"
-              name="sub_heading"
-              placeholder="Sub Heading"
-              // value={}
-              onChange={e => setSubHeading(e.target.value)}
-            />
-          </div>
+              <input
+                type="text"
+                name="sub_heading"
+                placeholder="Sub Heading"
+                value={subHeading}
+                onChange={e => setSubHeading(e.target.value)}
+              />
+            </div>
 
-          <div className="one-column">
-            <input
-              type="text"
-              name="headline"
-              placeholder="Headline"
-              // value={}
-              onChange={e => setHeadline(e.target.value)}
-            />
-          </div>
+            <div className="one-column">
+              <input
+                type="text"
+                name="headline"
+                placeholder="Headline"
+                value={headline}
+                onChange={e => setHeadline(e.target.value)}
+              />
+            </div>
 
-          <div className="four-column">
-            <input
-              type="text"
-              name="profile_image"
-              placeholder="Profile Image (URL)"
-              // value={}
-              onChange={e => setProfileImage(e.target.value)}
-            />
-            <input
-              type="text"
-              name="article_image"
-              placeholder="Article Image (URL)"
-              // value={}
-              onChange={e => setArticleImage(e.target.value)}
-            />
-            <input
-              type="text"
-              name="body_image_one"
-              placeholder="Body Image 1 (URL)"
-              // value={}
-              onChange={e => setBodyImageOne(e.target.value)}
-            />
-            <input
-              type="text"
-              name="body_image_two"
-              placeholder="Body Image 2 (URL)"
-              // value={}
-              onChange={e => setBodyImageTwo(e.target.value)}
-            />
-          </div>
+            <div className="four-column">
+              <input
+                type="text"
+                name="profile_image"
+                placeholder="Profile Image (URL)"
+                value={profileImage}
+                onChange={e => setProfileImage(e.target.value)}
+              />
+              <input
+                type="text"
+                name="article_image"
+                placeholder="Article Image (URL)"
+                value={articleImage}
+                onChange={e => setArticleImage(e.target.value)}
+              />
+              <input
+                type="text"
+                name="body_image_one"
+                placeholder="Body Image 1 (URL)"
+                value={bodyImageOne}
+                onChange={e => setBodyImageOne(e.target.value)}
+              />
+              <input
+                type="text"
+                name="body_image_two"
+                placeholder="Body Image 2 (URL)"
+                value={bodyImageTwo}
+                onChange={e => setBodyImageTwo(e.target.value)}
+              />
+            </div>
 
-          <div className="four-column">
-            <input
-              type="text"
-              name="facebook"
-              placeholder="Facebook"
-              // value={}
-              onChange={e => setFacebook(e.target.value)}
-            />
-            <input
-              type="text"
-              name="instagram"
-              placeholder="Instagram"
-              // value={}
-              onChange={e => setInstagram(e.target.value)}
-            />
-            <input
-              type="text"
-              name="twitter"
-              placeholder="Twitter"
-              // value={}
-              onChange={e => setTwitter(e.target.value)}
-            />
-            <input
-              type="text"
-              name="job_site"
-              placeholder="Job Site"
-              // value={}
-              onChange={e => setJobSite(e.target.value)}
-            />
-          </div>
+            <div className="four-column">
+              <input
+                type="text"
+                name="facebook"
+                placeholder="Facebook (URL)"
+                value={facebook}
+                onChange={e => setFacebook(e.target.value)}
+              />
+              <input
+                type="text"
+                name="instagram"
+                placeholder="Instagram (URL)"
+                value={instagram}
+                onChange={e => setInstagram(e.target.value)}
+              />
+              <input
+                type="text"
+                name="twitter"
+                placeholder="Twitter (URL)"
+                value={twitter}
+                onChange={e => setTwitter(e.target.value)}
+              />
+              <input
+                type="text"
+                name="job_site (URL)"
+                placeholder="Job Site"
+                value={jobSite}
+                onChange={e => setJobSite(e.target.value)}
+              />
+            </div>
 
-          <div className="one-column">
-            <input
-              type="text"
-              name="short_description"
-              placeholder="Short Description"
-              // value={}
-              onChange={e => setShortDescription(e.target.value)}
-            />
-          </div>
+            <div className="one-column">
+              <input
+                type="text"
+                name="short_description"
+                placeholder="Short Description"
+                value={shortDescription}
+                onChange={e => setShortDescription(e.target.value)}
+              />
+            </div>
 
-          <div className="two-column">
-            <textarea
-              type="text"
-              name="description"
-              placeholder="Description 1"
-              // value={}
-              onChange={e => setDescriptionOne(e.target.value)}
-            />
-            <textarea
-              type="text"
-              name="description"
-              placeholder="Description 2"
-              // value={}
-              onChange={e => setDescriptionTwo(e.target.value)}
-            />
-          </div>
+            <div className="two-column">
+              <textarea
+                type="text"
+                name="description"
+                placeholder="Description 1"
+                value={descriptionOne}
+                onChange={e => setDescriptionOne(e.target.value)}
+              />
+              <textarea
+                type="text"
+                name="description"
+                placeholder="Description 2"
+                value={descriptionTwo}
+                onChange={e => setDescriptionTwo(e.target.value)}
+              />
+            </div>
 
-          <div>
-            <button className="btn" type="submit">
-              Save
-            </button>
-          </div>
-        </form>
-      ) : (
-        <h1>Not Available</h1>
-      )}
-    </div>
-  );
+            <div className="save-btn">
+              <button className="btn" type="submit">
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>Not Available</h1>
+        </div>
+      );
+    }
+  };
+
+  return <div>{determineService()}</div>;
 };
 
 export default ProfileForm;

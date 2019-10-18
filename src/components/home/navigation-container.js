@@ -26,10 +26,10 @@ const NavigationContainer = props => {
             </Link>
           ) : null}
         </div>
-        <div className="logout-btn">
+        <div>
           {props.loggedIn ? (
-            <div>
-              <button onClick={e => handleLogout(e)}>Logout</button>
+            <div className="logout-btn">
+              <a onClick={e => handleLogout(e)}>Logout</a>
             </div>
           ) : null}
         </div>
