@@ -1,8 +1,9 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class ProfileBody extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -23,27 +24,39 @@ export default class ProfileBody extends Component {
       profile_image,
       body_image_one,
       body_image_two
-    } = this.props.item
+    } = this.props.item;
 
     return (
-      <div className="profile-body-wrapper">
-        <img src={article_image} alt="" />
-        <img src={profile_image} alt="" />
-        <img src={body_image_one} alt="" />
-        <img src={body_image_two} alt="" />
-        <div>{first_name}</div>
-        <div>{last_name}</div>
-        <div>{age}</div>
-        <div>{short_description}</div>
-        <div>{sub_heading}</div>
-        <div>{headline}</div>
-        <div>{description_one}</div>
-        <div>{description_two}</div>
-        <div>{facebook}</div>
-        <div>{instagram}</div>
-        <div>{twitter}</div>
-        <div>{job_site}</div>
+      <div>
+        <div className="btn">
+          <Link
+            to={{
+              pathname: `/profile-form`,
+              state: this.props.timeToUpdate
+            }}
+          >
+            <button>Update</button>
+          </Link>
+        </div>
+        <div className="profile-body-wrapper">
+          <img src={article_image} alt="" />
+          <img src={profile_image} alt="" />
+          <img src={body_image_one} alt="" />
+          <img src={body_image_two} alt="" />
+          <div>{first_name}</div>
+          <div>{last_name}</div>
+          <div>{age}</div>
+          <div>{short_description}</div>
+          <div>{sub_heading}</div>
+          <div>{headline}</div>
+          <div>{description_one}</div>
+          <div>{description_two}</div>
+          <div>{facebook}</div>
+          <div>{instagram}</div>
+          <div>{twitter}</div>
+          <div>{job_site}</div>
+        </div>
       </div>
-    )
+    );
   }
 }
