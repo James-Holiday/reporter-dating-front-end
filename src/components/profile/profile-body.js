@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class ProfileBody extends Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       currentId: this.props.currentId,
       profileItem: {}
