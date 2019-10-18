@@ -11,7 +11,7 @@ const Auth = props => {
   };
 
   return (
-    <div className="app">
+    <div className="auth-page">
       <h1>Login</h1>
 
       {props.loggedIn ? null : (

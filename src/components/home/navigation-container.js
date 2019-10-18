@@ -10,7 +10,9 @@ const NavigationContainer = props => {
   return (
     <div className="navigation-wrapper">
       <div className="left-side">
-        <div className="logo">Logo goes here...</div>
+        <div className="logo" id="logo">
+          <img src={require("../../logo.png")}/>
+        </div>
       </div>
       <div className="right-side">
         <Link to="/" className="link">

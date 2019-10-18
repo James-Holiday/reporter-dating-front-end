@@ -8,11 +8,10 @@
 
 }
 
-.logo {
-    color: $off-white;
-    cursor: pointer;
+#logo img {
+    width: 75px;
     &:hover {
-        font-weight: bold;
+        cursor: pointer;
     }
 }
 

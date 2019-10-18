@@ -10,7 +10,8 @@ const BottomNavigationContainer = props => {
     return (
         <div className="bottom-navigation-wrapper">
             <div className="left-side">
-                <div className="logo">Logo goes here...</div>
+                <div className="logo" id="logo">
+                </div>
             </div>
             <div className="right-side">
                 <Link to="/" className="link">
