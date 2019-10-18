@@ -4,7 +4,7 @@ import axios from "axios";
 const ProfileForm = props => {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
-  const [age, setAge] = React.useState(0);
+  const [age, setAge] = React.useState("");
   const [shortDescription, setShortDescription] = React.useState("");
   const [subHeading, setSubHeading] = React.useState("");
   const [headline, setHeadline] = React.useState("");
@@ -21,6 +21,11 @@ const ProfileForm = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (firstName === "" && lastName === "" && profileImage === "") {
+      return console.log(
+        "UNSUCCESSFUL SUBMIT:\nNO FIRST NAME\nNO LAST NAME\nNO PROFILE IMAGE"
+      );
+    }
     axios
       .post(`https://stormy-coast-00785.herokuapp.com/userdata`, {
         first_name: firstName,
@@ -62,7 +67,7 @@ const ProfileForm = props => {
                 type="text"
                 name="first_name"
                 placeholder="First Name"
-                // value={}
+                value={firstName}
                 onChange={e => setFirstName(e.target.value)}
               />
 
@@ -70,7 +75,7 @@ const ProfileForm = props => {
                 type="text"
                 name="last_name"
                 placeholder="Last Name"
-                // value={}
+                value={lastName}
                 onChange={e => setLastName(e.target.value)}
               />
             </div>
@@ -80,7 +85,7 @@ const ProfileForm = props => {
                 type="text"
                 name="age"
                 placeholder="Age"
-                // value={}
+                value={age}
                 onChange={e => setAge(e.target.value)}
               />
 
@@ -88,7 +93,7 @@ const ProfileForm = props => {
                 type="text"
                 name="sub_heading"
                 placeholder="Sub Heading"
-                // value={}
+                value={subHeading}
                 onChange={e => setSubHeading(e.target.value)}
               />
             </div>
@@ -98,7 +103,7 @@ const ProfileForm = props => {
                 type="text"
                 name="headline"
                 placeholder="Headline"
-                // value={}
+                value={headline}
                 onChange={e => setHeadline(e.target.value)}
               />
             </div>
@@ -108,28 +113,28 @@ const ProfileForm = props => {
                 type="text"
                 name="profile_image"
                 placeholder="Profile Image (URL)"
-                // value={}
+                value={profileImage}
                 onChange={e => setProfileImage(e.target.value)}
               />
               <input
                 type="text"
                 name="article_image"
                 placeholder="Article Image (URL)"
-                // value={}
+                value={articleImage}
                 onChange={e => setArticleImage(e.target.value)}
               />
               <input
                 type="text"
                 name="body_image_one"
                 placeholder="Body Image 1 (URL)"
-                // value={}
+                value={bodyImageOne}
                 onChange={e => setBodyImageOne(e.target.value)}
               />
               <input
                 type="text"
                 name="body_image_two"
                 placeholder="Body Image 2 (URL)"
-                // value={}
+                value={bodyImageTwo}
                 onChange={e => setBodyImageTwo(e.target.value)}
               />
             </div>
@@ -138,29 +143,29 @@ const ProfileForm = props => {
               <input
                 type="text"
                 name="facebook"
-                placeholder="Facebook"
-                // value={}
+                placeholder="Facebook (URL)"
+                value={facebook}
                 onChange={e => setFacebook(e.target.value)}
               />
               <input
                 type="text"
                 name="instagram"
-                placeholder="Instagram"
-                // value={}
+                placeholder="Instagram (URL)"
+                value={instagram}
                 onChange={e => setInstagram(e.target.value)}
               />
               <input
                 type="text"
                 name="twitter"
-                placeholder="Twitter"
-                // value={}
+                placeholder="Twitter (URL)"
+                value={twitter}
                 onChange={e => setTwitter(e.target.value)}
               />
               <input
                 type="text"
-                name="job_site"
+                name="job_site (URL)"
                 placeholder="Job Site"
-                // value={}
+                value={jobSite}
                 onChange={e => setJobSite(e.target.value)}
               />
             </div>
@@ -170,7 +175,7 @@ const ProfileForm = props => {
                 type="text"
                 name="short_description"
                 placeholder="Short Description"
-                // value={}
+                value={shortDescription}
                 onChange={e => setShortDescription(e.target.value)}
               />
             </div>
@@ -180,19 +185,19 @@ const ProfileForm = props => {
                 type="text"
                 name="description"
                 placeholder="Description 1"
-                // value={}
+                value={descriptionOne}
                 onChange={e => setDescriptionOne(e.target.value)}
               />
               <textarea
                 type="text"
                 name="description"
                 placeholder="Description 2"
-                // value={}
+                value={descriptionTwo}
                 onChange={e => setDescriptionTwo(e.target.value)}
               />
             </div>
 
-            <div>
+            <div className="save-btn">
               <button className="btn" type="submit">
                 Save
               </button>
