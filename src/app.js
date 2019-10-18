@@ -8,12 +8,12 @@ import ProfileForm from "./pages/profile-form";
 import NavigationContainer from "./components/home/navigation-container";
 import BottomNavigationContainer from "./components/home/bottom-navigation-container";
 
-
 const App = () => {
   const [loggedIn, setLoggedIn] = React.useState(false);
 
   const successfulLogin = () => {
     setLoggedIn(true);
+    console.log("WE ARE WORKING TO THIS POINT");
   };
 
   return (
@@ -38,7 +38,10 @@ const App = () => {
             render={props => <ProfileForm {...props} loggedIn={loggedIn} />}
           />
         </Switch>
-        <BottomNavigationContainer loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        <BottomNavigationContainer
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+        />
       </div>
     </BrowserRouter>
   );
